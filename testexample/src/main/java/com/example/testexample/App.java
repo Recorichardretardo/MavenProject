@@ -10,6 +10,10 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+import com.example.stackexample.StackExample;
+import com.example.testInterface.LogestSubString;
+import com.example.testInterfaceImpl.LogestSubStringImpl;
+
 class App {
 	private static final Logger logger = Logger.getLogger(App.class);
 
@@ -30,7 +34,7 @@ class App {
 				String one = args[0];
 				String two = args[1];
 				logger.debug("args.length one : " + args.length +"-----"+ one);
-				logger.debug("args.length one : " + args.length +"-----"+ two);
+				logger.debug("args.length two : " + args.length +"-----"+ two);
 			}
 		}
 		/*
@@ -72,6 +76,24 @@ class App {
 
 		System.out.println("Hello World!");
 		System.out.println(getLocalCurrentDate());
+		
+		
+		// calling interface methods
+		String str = "abcdabzyxwvu";
+		LogestSubString logestSubString = new LogestSubStringImpl();
+		String longest = logestSubString.longest(str);
+		System.out.println("longest : "+longest);
+		
+		// calling Class
+		
+		StackExample stackExample = new StackExample();
+		stackExample.push(10);
+		stackExample.push(20);
+		stackExample.push(30);
+		stackExample.push(40);
+		stackExample.pop();
+		System.out.println("Printing the top most value : "+stackExample.peek());
+		
 	}
 
 	public static String getFileDirectory(String fileName) {
