@@ -13,7 +13,12 @@ The packaging type of the project must be jar: <packaging>jar</packaging>
 
 
 And to generate the JAR file from the project, run Maven with the goal assembly:single. For example, in the command line:
+
 mvn clean install assembly:single
+
+clean install assembly:single
+
+
 
 
 https://mkyong.com/maven/how-to-create-a-jar-file-with-maven/
