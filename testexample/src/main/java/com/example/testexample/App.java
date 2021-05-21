@@ -12,65 +12,96 @@ import org.apache.log4j.Logger;
 
 class App {
 	private static final Logger logger = Logger.getLogger(App.class);
+
 	public static void main(String[] args) {
+		
+		if (args.length > 0) {
+			if (args.length == 1) {
+				String one = args[0];
+				logger.debug("args.length : " + one);
+				if(one.equalsIgnoreCase("Hi")) {
+					logger.debug("args.length zero : " + args.length +"-----"+ one);
+				}else {
+					logger.debug("args.length zero else : " +args.length +"-----"+ one);
+				}
+			}
+			
+			if (args.length == 2) {
+				String one = args[0];
+				String two = args[1];
+				logger.debug("args.length one : " + args.length +"-----"+ one);
+				logger.debug("args.length one : " + args.length +"-----"+ two);
+			}
+		}
+		/*
+		if (args.length > 0) {
+			String one = args[0];
+			logger.debug("one : " + one);
+		}
+
+		if (args.length > 1) {
+			String two = args[1];
+			logger.debug("two : " + two);
+		}
+		*/
+
 		String fileName = "application.properties";
 		App app = new App();
 		try {
 			Properties propValues = app.getPropValues(fileName);
-			System.out.println("propValues :"+propValues);
+			System.out.println("propValues :" + propValues);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		String filePath = getFileDirectory(fileName);
-		System.out.println("filePath :"+filePath);
+		System.out.println("filePath :" + filePath);
 		FileReader reader;
 		try {
 			reader = new FileReader(filePath);
-			Properties p=new Properties();
+			Properties p = new Properties();
 			p.load(reader);
-			System.out.println("dir"+p);
+			System.out.println("dir" + p);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		System.out.println("Class path"+System.getProperty("java.class.path"));
-		
+
+		System.out.println("Class path" + System.getProperty("java.class.path"));
+
 		System.out.println("Hello World!");
 		System.out.println(getLocalCurrentDate());
 	}
 
 	public static String getFileDirectory(String fileName) {
 		String workingDir = System.getProperty("user.dir");
-		return workingDir+File.separator+fileName;
+		return workingDir + File.separator + fileName;
 	}
-	
-	public  Properties getPropValues(String fileName) throws IOException {
+
+	public Properties getPropValues(String fileName) throws IOException {
 		InputStream inputStream = null;
 		Properties prop = new Properties();
 		try {
-			
+
 			inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
- 
+
 			if (inputStream != null) {
 				prop.load(inputStream);
 			} else {
 				throw new FileNotFoundException("property file '" + fileName + "' not found in the classpath");
-			}			
+			}
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
 		} finally {
-			
+
 			if (inputStream != null) {
 				inputStream.close();
 			}
 		}
 		return prop;
 	}
-	
+
 	private static String getLocalCurrentDate() {
 
 		if (logger.isDebugEnabled()) {
