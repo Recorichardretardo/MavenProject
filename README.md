@@ -19,7 +19,7 @@ https://www.codejava.net/coding/
 
 ```
 
-how-to-create-executable-jar-file-with-resources-and-dependencies-using-maven-in-eclipse\
+how-to-create-executable-jar-file-with-resources-and-dependencies-using-maven-in-eclipse
 
 
 The packaging type of the project must be jar: <packaging>jar</packaging>
