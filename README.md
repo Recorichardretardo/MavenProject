@@ -15,3 +15,10 @@ mvn clean install assembly:single
 
 
 https://mkyong.com/maven/how-to-create-a-jar-file-with-maven/
+
+
+
+java -jar testexample-0.0.1-SNAPSHOT-jar-with-dependencies.jar Hello
+java -jar testexample-0.0.1-SNAPSHOT-jar-with-dependencies.jar Hi
+
+java -jar testexample-0.0.1-SNAPSHOT-jar-with-dependencies.jar Hi Hello
