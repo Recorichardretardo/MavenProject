@@ -5,9 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 class App {
+	private static final Logger logger = Logger.getLogger(App.class);
 	public static void main(String[] args) {
 		String fileName = "application.properties";
 		App app = new App();
@@ -36,6 +40,7 @@ class App {
 		System.out.println("Class path"+System.getProperty("java.class.path"));
 		
 		System.out.println("Hello World!");
+		System.out.println(getLocalCurrentDate());
 	}
 
 	public static String getFileDirectory(String fileName) {
@@ -64,5 +69,16 @@ class App {
 			}
 		}
 		return prop;
+	}
+	
+	private static String getLocalCurrentDate() {
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("getLocalCurrentDate() is executed!");
+		}
+
+		Date date = new Date();
+		return date.toString();
+
 	}
 }
