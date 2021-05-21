@@ -9,7 +9,7 @@ public class LogestSubStringImpl implements LogestSubString {
 
 	@Override
 	public String longest(String str) {
-		Set<Character> set = new HashSet<>();
+		Set<Character> set = new HashSet<Character>();
 		String longestOverall = "", longestTillNow = "";
 		for(char c : str.toCharArray()) {
 			if(set.contains(c)) {
